@@ -1,0 +1,24 @@
+<div ng-controller="SidebarCtrl">
+  <img src="/src/styles/juke.svg" class="logo">
+  <section>
+    <h4 class="menu-item active">
+      <a routerLink="/albums" routerLinkActive="active">ALBUMS</a>
+    </h4>
+  </section>
+  <section>
+    <h4 ui-sref-active="active" class="menu-item">
+      <a ui-sref="artists">ARTISTS</a>
+    </h4>
+  </section>
+  <hr>
+  <section>
+    <h4 class="text-muted">PLAYLISTS</h4>
+    <p ui-sref-active="active" ng-repeat="playlist in playlists" class="menu-item">
+      <a>
+      </a>
+    </p>
+    <p>
+      <a class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+    </p>
+  </section>
+</div>
