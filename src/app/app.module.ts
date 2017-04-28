@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PlayerComponent } from './components/player/player.component';
 import { AlbumsComponent } from './components/albums/albums.component';
 
+import { AlbumsService } from './services/albums/albums.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ import { AlbumsComponent } from './components/albums/albums.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AlbumsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
