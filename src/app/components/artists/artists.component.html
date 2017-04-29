@@ -5,8 +5,8 @@
       <input type="text" class="form-control" placeholder="by name" [formControl]="filterInput"/>
     </div>
     <div class="list-group">
-      <div class="list-group-item" *ngFor="let artist of filteredArtists">
-      <a >{{ artist?.name }}</a>
+      <div class="list-group-item" *ngFor="let artist of filteredArtists | async">
+      <a >{{ artist.name }}</a>
     </div>
   </div>
 </div>

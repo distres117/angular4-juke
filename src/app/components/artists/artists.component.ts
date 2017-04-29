@@ -9,8 +9,8 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
   templateUrl: './artists.component.html'
 })
 export class ArtistsComponent implements OnInit{
-  artists: ArtistModel[];
-  filteredArtists: ArtistModel[];
+  artists: Observable<ArtistModel[]>;
+  filteredArtists: Observable<ArtistModel[]>;
   filterInput: FormControl = new FormControl();
 
   constructor(
@@ -18,16 +18,16 @@ export class ArtistsComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.artistService.getArtists()
-      .subscribe(artists=>this.artists = this.filteredArtists = artists);
+    this.artists = this.filteredArtists = this.artistService.getArtists();
     this.filterInput
       .valueChanges
       .debounceTime(200)
       .subscribe((term:string)=>{
         if (term){
-          this.filteredArtists = this.artists.filter((artist:ArtistModel)=>{
-            return artist.name.toLowerCase().slice(0, term.length) === term.toLowerCase();
-          })
+          this.filteredArtists = this.artists
+            .map(artists=>{
+              return artists.filter(artist=>artist.name.toLowerCase().slice(0, term.length) === term.toLowerCase());
+            });
         }else{
           this.filteredArtists = this.artists;
         }
