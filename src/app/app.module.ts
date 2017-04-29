@@ -1,8 +1,9 @@
+import { ArtistService } from './services/artists/artist.service';
 import { PlayerService } from './services/player/player.service';
 import { apiUrl } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,7 +15,8 @@ import { AlbumsComponent } from './components/albums/albums.component';
 import { AlbumsService } from './services/albums/albums.service';
 import { AlbumComponent } from './components/album/album.component';
 import { SongsComponent } from './components/songs/songs.component';
-import { ProgressBarDirective } from './directives/progress-bar.directive';
+import { ArtistsComponent } from './components/artists/artists.component';
+import { ArtistComponent } from './components/artist/artist.component';
 
 @NgModule({
   declarations: [
@@ -24,17 +26,20 @@ import { ProgressBarDirective } from './directives/progress-bar.directive';
     AlbumsComponent,
     AlbumComponent,
     SongsComponent,
-    ProgressBarDirective
+    ArtistsComponent,
+    ArtistComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AlbumsService,
-    PlayerService
+    PlayerService,
+    ArtistService
     ],
   bootstrap: [AppComponent]
 })

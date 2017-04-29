@@ -1,13 +1,13 @@
 <div ng-controller="SidebarCtrl">
   <img src="/src/styles/juke.svg" class="logo">
   <section>
-    <h4 class="menu-item active">
-      <a routerLink="/albums" routerLinkActive="active">ALBUMS</a>
+    <h4 class="menu-item" routerLinkActive="active">
+      <a routerLink="/albums">ALBUMS</a>
     </h4>
   </section>
   <section>
-    <h4 ui-sref-active="active" class="menu-item">
-      <a ui-sref="artists">ARTISTS</a>
+    <h4 class="menu-item" routerLinkActive="active">
+      <a routerLink="/artists" >ARTISTS</a>
     </h4>
   </section>
   <hr>

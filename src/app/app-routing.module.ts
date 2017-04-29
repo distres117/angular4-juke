@@ -1,3 +1,4 @@
+import { ArtistRouting } from './routes/artist.routes.';
 import { AlbumRouting } from './routes/album.routes';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,7 @@ const routes : Routes = [
   imports: [
     RouterModule.forRoot(routes),
     AlbumRouting,
+    ArtistRouting
   ],
   exports:[RouterModule]
 })

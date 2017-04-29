@@ -1,0 +1,12 @@
+<div>
+  <h3>Artists</h3>
+    <div class="panel input-group">
+      <span class="input-group-addon">Filter</span>
+      <input type="text" class="form-control" placeholder="by name" [formControl]="filterInput"/>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let artist of filteredArtists">
+      <a >{{ artist?.name }}</a>
+    </div>
+  </div>
+</div>
