@@ -1,0 +1,5 @@
+<div class="album">
+    <h3>{{ album?.name }}</h3>
+    <img src="{{ album?.imageUrl }}" class="img-thumbnail"/>
+</div>
+<song-list [songs]="album?.songs"></song-list>

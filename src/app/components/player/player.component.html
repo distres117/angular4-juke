@@ -1,19 +1,21 @@
-<div ng-show="getCurrentSong()">
-  <h2></h2>
-  <div class="pull-left">
-    <button class="btn btn-default" ng-click="previous()">
+<div *ngIf="isPlaying()">
+  <footer>
+    <h2>{{ currentSong?.name }}</h2>
+    <div class="pull-left">
+      <button class="btn btn-default" (click)="previous()">
       <span class="glyphicon glyphicon-step-backward"></span>
     </button>
-    <button class="btn btn-default" ng-click="toggle()">
-      <span class="glyphicon" ng-class="{'glyphicon-pause': isPlaying(), 'glyphicon-play': !isPlaying()}"></span>
+      <button class="btn btn-default" (click)="toggle()">
+      <span class="glyphicon" [ngClass]="{'glyphicon-pause': isPlaying(), 'glyphicon-play': !isPlaying()}"></span>
     </button>
-    <button class="btn btn-default" ng-click="next()">
+      <button class="btn btn-default" (click)="next()">
       <span class="glyphicon glyphicon-step-forward"></span>
     </button>
-  </div>
-  <div class="bar">
-    <div class="progress">
-      <div class="progress-bar" ng-style="{width: getPercent() + '%'}"></div>
     </div>
-  </div>
+    <div class="bar">
+      <div class="progress">
+        <div class="progress-bar" [ngStyle]="{'width': progress + '%'}"></div>
+      </div>
+    </div>
+  </footer>
 </div>
