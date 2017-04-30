@@ -1,3 +1,4 @@
+import { SongModel } from './../../models/song.model';
 import { AlbumDetailModel } from './../../models/album-detail.model';
 import { apiUrl } from './../../app.config';
 import { Observable } from 'rxjs/Rx';
@@ -13,8 +14,9 @@ export class AlbumsService {
     private http:Http 
   ) { }
 
-  getAlbums():Observable<AlbumModel[]>{
-    return this.http.get(`${apiUrl}/api/albums`)
+  getAlbums(id?:string):Observable<AlbumModel[]>{
+    let url = id ? `api/artists/${id}/albums` : 'api/albums';
+    return this.http.get(`${apiUrl}/${url}`)
       .map((res:Response)=>{
         return res.json().map(album=>new AlbumModel(album));
       })
@@ -23,6 +25,10 @@ export class AlbumsService {
   getAlbum(id:string):Observable<AlbumDetailModel>{
     return this.http.get(`${apiUrl}/api/albums/${id}`)
       .map(res=>new AlbumDetailModel(res.json()));
+  }
+  getAlbumSongs(id:string):Observable<SongModel[]>{
+    return this.getAlbum(id)
+      .map(album=>album.songs);
   }
   
   handleError(error:Response){

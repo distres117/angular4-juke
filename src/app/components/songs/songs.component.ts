@@ -1,3 +1,6 @@
+import { AlbumsService } from './../../services/albums/albums.service';
+import { ActivatedRoute } from '@angular/router';
+import { ArtistService } from './../../services/artists/artist.service';
 import { PlayerService } from './../../services/player/player.service';
 import { SongModel } from '../../models/song.model';
 import { Component, Input, OnInit } from '@angular/core';
@@ -7,12 +10,24 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './songs.component.html'
 })
 export class SongsComponent implements OnInit {
-  @Input() songs:SongModel[];
+  songs: SongModel[];
   constructor(
-    private playerService:PlayerService
+    private playerService:PlayerService,
+    private artistService: ArtistService,
+    private albumsService: AlbumsService,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit() {
+    let thisUrl = this.route.snapshot.url.reverse()[0].path;
+    if (thisUrl === 'songs'){
+      let id = this.route.parent.snapshot.url.reverse()[0].toString();
+      this.artistService.getArtistSongs(id)
+        .subscribe(songs=>this.songs = songs);
+    }else{
+      this.albumsService.getAlbumSongs(thisUrl)
+        .subscribe(songs=>this.songs = songs);
+    }
   }
   toggle(song:SongModel){
     if (this.playerService.currentSong !== song)

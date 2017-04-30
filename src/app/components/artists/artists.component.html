@@ -6,7 +6,7 @@
     </div>
     <div class="list-group">
       <div class="list-group-item" *ngFor="let artist of filteredArtists | async">
-      <a >{{ artist.name }}</a>
+      <a [routerLink]="[artist._id]" >{{ artist.name }}</a>
     </div>
   </div>
 </div>

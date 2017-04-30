@@ -1,3 +1,8 @@
-<p>
-  artist works!
-</p>
+<div>
+  <h3>{{ artist?.name }}</h3>
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active"><a [routerLink]="['albums']" >ALBUMS</a></li>
+    <li routeLinkActive="active"><a [routerLink]="['songs']">SONGS</a></li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

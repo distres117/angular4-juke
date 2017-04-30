@@ -2,7 +2,7 @@ import { FormControl } from '@angular/forms';
 import { ArtistService } from './../../services/artists/artist.service';
 import { Observable } from 'rxjs/Rx';
 import { ArtistModel } from './../../models/artist.model';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-artists',

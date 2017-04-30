@@ -20,7 +20,6 @@ export class AlbumComponent implements OnInit {
     this.route.params
       .switchMap(params=>this.albumService.getAlbum(params['id']))
       .subscribe(album=>{
-        console.log(album);
         this.album = album;
       });
   }
