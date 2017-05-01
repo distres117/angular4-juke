@@ -1,3 +1,5 @@
+import { SongsService } from './services/songs/songs.service';
+import { PlaylistService } from './services/playlist/playlist.service';
 import { ArtistService } from './services/artists/artist.service';
 import { PlayerService } from './services/player/player.service';
 import { apiUrl } from './app.config';
@@ -17,6 +19,8 @@ import { AlbumComponent } from './components/album/album.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { PlaylistFormComponent } from './components/playlist-form/playlist-form.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { ArtistComponent } from './components/artist/artist.component';
     AlbumComponent,
     SongsComponent,
     ArtistsComponent,
-    ArtistComponent
+    ArtistComponent,
+    PlaylistFormComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,9 @@ import { ArtistComponent } from './components/artist/artist.component';
   providers: [
     AlbumsService,
     PlayerService,
-    ArtistService
+    ArtistService,
+    PlaylistService,
+    SongsService
     ],
   bootstrap: [AppComponent]
 })

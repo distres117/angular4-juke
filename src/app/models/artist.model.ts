@@ -1,8 +1,12 @@
 export class ArtistModel{
-    name:string;
-    _id:string
+    name:string = null;
+    _id:string = null
 
     constructor(data:Object){
-        Object.assign(this, data);
+        for(let k in data){
+            if (this[k]===null)
+                this[k] = data[k];
+        }
+
     }
 }

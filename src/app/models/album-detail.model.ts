@@ -3,10 +3,10 @@ import { SongModel } from './song.model';
 import { ArtistModel } from './artist.model';
 
 export class AlbumDetailModel{
-    _id:string;
-    name:string;
-    artists: ArtistModel[];
-    songs:SongModel[];
+    _id:string = null;
+    name:string = null;
+    artists: ArtistModel[] = null;
+    songs:SongModel[] = null;
 
     constructor(data:Object){
         for(let k in data){

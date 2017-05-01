@@ -1,0 +1,25 @@
+<div>
+  <h3>{{ playlist?.name }}</h3>
+  <song-list></song-list>
+  <hr>
+  <div class="well">
+    <form class="form-horizontal" novalidate #songSelect>
+      <fieldset>
+        <legend>Add to Playlist</legend>
+        <div class="form-group">
+          <label for="song" class="col-xs-2 control-label">Song</label>
+          <div class="col-xs-10">
+            <select class="form-control" name="song" required>
+              <option *ngFor="let song of songs">{{ song?.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-10 col-xs-offset-2">
+            <button type="submit" class="btn btn-success" ng-disabled="songSelect.$invalid" (click)="addSong(songSelect.song)">Add Song</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

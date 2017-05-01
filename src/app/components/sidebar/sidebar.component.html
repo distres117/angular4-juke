@@ -13,12 +13,13 @@
   <hr>
   <section>
     <h4 class="text-muted">PLAYLISTS</h4>
-    <p ui-sref-active="active" ng-repeat="playlist in playlists" class="menu-item">
-      <a>
+    <p routerLinkActive="active" *ngFor="let playlist of playlists" class="menu-item">
+      <a [routerLink]="['playlists', playlist._id]">
+        {{ playlist?.name }}
       </a>
     </p>
     <p>
-      <a class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+      <a class="btn btn-primary btn-block" [routerLink]="['/playlists/new']"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
     </p>
   </section>
 </div>

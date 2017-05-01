@@ -1,18 +1,18 @@
 import { apiUrl } from './../app.config';
 import { ArtistModel } from './artist.model';
 export class SongModel{
-    _id:string;
-    size:number;
-    name:string;
-    extension:string;
-    genres:string[];
-    artists: ArtistModel[];
+    _id:string = null;
+    size:number = null;
+    name:string = null;
+    extension:string = null;
+    genres:string[] = null;
+    artists: ArtistModel[] | string[] = null;
 
     constructor(data:Object){
         for(let k in data){
-            if (k === 'artists')
+            if (k === 'artists' && !data[k].some(d=>typeof d === 'string'))
                 this.artists = data[k].map(artist=>new ArtistModel(artist));
-            else
+            else if (this[k]===null)
                 this[k] = data[k];
         }
     }

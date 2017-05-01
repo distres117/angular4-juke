@@ -1,3 +1,4 @@
+import { PlayListRouting } from './routes/playlist.routes';
 import { ArtistRouting } from './routes/artist.routes.';
 import { AlbumRouting } from './routes/album.routes';
 import { AlbumsComponent } from './components/albums/albums.component';
@@ -11,7 +12,8 @@ const routes : Routes = [
   imports: [
     RouterModule.forRoot(routes),
     AlbumRouting,
-    ArtistRouting
+    ArtistRouting,
+    PlayListRouting
   ],
   exports:[RouterModule]
 })
