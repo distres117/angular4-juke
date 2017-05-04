@@ -18,8 +18,19 @@ export class SidebarComponent implements OnInit {
     this.playlistService.getPlaylists()
       .subscribe(playlists=>{
         this.playlists = playlists;
-      })
+      });
+    this.playlistService.onNewPlaylist.subscribe(playlist=>this.playlists.push(playlist));
       
+  }
+  removePlaylist(playlist:PlaylistModel){
+    this.playlistService.deletePlaylist(playlist._id)
+      .subscribe(()=>{
+        this.deletePlaylist(playlist);
+      });
+  }
+  deletePlaylist(playlist:PlaylistModel){
+    let idx = this.playlists.indexOf(playlist);
+    this.playlists.splice(idx,1);
   }
 
 }

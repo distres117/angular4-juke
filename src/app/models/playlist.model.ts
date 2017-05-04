@@ -5,7 +5,8 @@ export class PlaylistModel{
     name:string = null;
     artists: string[] | ArtistModel[] = null;
     songs: string[] | SongModel[] = null;
-    constructor(data:Object){
+    constructor(data?:Object){
+        if (!data) return;
         for(let k in data){
             if (k === 'artists' && !this.isStringArray(data[k])){
                 this.artists = data[k].map(artist=>new ArtistModel(artist));

@@ -5,8 +5,6 @@ import { Observable } from 'rxjs/Rx';
 import { AlbumModel } from './../../models/album.model';
 import { Headers, Http, RequestOptions, Response, ResponseType } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AlbumsService {

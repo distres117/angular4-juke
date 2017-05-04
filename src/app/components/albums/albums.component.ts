@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { AlbumModel } from '../../models/album.model';
@@ -12,12 +13,12 @@ export class AlbumsComponent implements OnInit {
   albums: Observable<AlbumModel[]>;
   constructor(
     private albumsService: AlbumsService,
-    private route:ActivatedRoute
+    private route:Location
   ) { }
 
   ngOnInit() {
-    let urlParts = this.route.snapshot.parent.url; 
-    let id = urlParts.length > 1 ? urlParts[1].toString() : undefined;
+    let urlParts = this.route.path().split('/');
+    let id = urlParts.includes('artists') ? urlParts[2] : undefined;
     this.albums = this.albumsService.getAlbums(id);
   }
 

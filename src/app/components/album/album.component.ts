@@ -18,7 +18,10 @@ export class AlbumComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .switchMap(params=>this.albumService.getAlbum(params['id']))
+      .switchMap(params=>{
+        let id = params['id'];
+        return this.albumService.getAlbum(id)
+      })
       .subscribe(album=>{
         this.album = album;
       });

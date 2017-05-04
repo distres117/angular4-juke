@@ -2,21 +2,22 @@
   <img src="/src/styles/juke.svg" class="logo">
   <section>
     <h4 class="menu-item" routerLinkActive="active">
-      <a routerLink="/albums">ALBUMS</a>
+      <a [routerLink]="['/albums']">ALBUMS</a>
     </h4>
   </section>
   <section>
     <h4 class="menu-item" routerLinkActive="active">
-      <a routerLink="/artists" >ARTISTS</a>
+      <a [routerLink]="['/artists']" >ARTISTS</a>
     </h4>
   </section>
   <hr>
   <section>
     <h4 class="text-muted">PLAYLISTS</h4>
     <p routerLinkActive="active" *ngFor="let playlist of playlists" class="menu-item">
-      <a [routerLink]="['playlists', playlist._id]">
+      <a [routerLink]="['/playlists', playlist._id]">
         {{ playlist?.name }}
       </a>
+      <button (click)="removePlaylist(playlist)" class="btn btn-xs pull-right">X</button>
     </p>
     <p>
       <a class="btn btn-primary btn-block" [routerLink]="['/playlists/new']"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
