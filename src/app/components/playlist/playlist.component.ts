@@ -22,6 +22,10 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.playlistService.onDeletePlaylist.subscribe(id=>{
+      if (id === this.playlist._id)
+        this.router.navigate(['/playlists/new']);
+    });
     this.routerEvents = this.router.events.subscribe(r => {
       if (r instanceof NavigationEnd) {
         const id = this.route.snapshot.url.reverse()[0].toString();

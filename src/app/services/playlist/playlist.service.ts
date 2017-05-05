@@ -10,6 +10,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class PlaylistService {
   onNewSong: EventEmitter<SongModel> = new EventEmitter();
   onNewPlaylist: EventEmitter<PlaylistModel> = new EventEmitter();
+  onDeletePlaylist: EventEmitter<string> = new EventEmitter();
   constructor(
     private http:Http
   ) { }
@@ -38,11 +39,13 @@ export class PlaylistService {
   createPlaylist(playlist:PlaylistModel):Observable<PlaylistModel>{
     return this.http.post(`${apiUrl}/api/playlists`, playlist)
       .map(res=>{
-        this.onNewPlaylist.emit(playlist);
-        return new PlaylistModel(res.json())
+        let newModel = new PlaylistModel(res.json());
+        this.onNewPlaylist.emit(newModel);
+        return newModel;
       });
   }
   deletePlaylist(id:string){
+    this.onDeletePlaylist.emit(id);
     return this.http.delete(`${apiUrl}/api/playlists/${id}`);
   }
 

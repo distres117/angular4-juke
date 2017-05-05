@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PlaylistModel } from '../../models/playlist.model';
 import { Observable } from 'rxjs/Rx';
 import { PlaylistService } from '../../services/playlist/playlist.service';
@@ -8,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  playlists: PlaylistModel[]
+  playlists: PlaylistModel[];
   
   constructor(
-    private playlistService: PlaylistService
+    private playlistService: PlaylistService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,7 @@ export class SidebarComponent implements OnInit {
       
   }
   removePlaylist(playlist:PlaylistModel){
+    //console.log(playlist._id);
     this.playlistService.deletePlaylist(playlist._id)
       .subscribe(()=>{
         this.deletePlaylist(playlist);

@@ -25,6 +25,7 @@ export class SongsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.playlistService.onNewSong.subscribe(song => this.songs.push(song));
     const subscribeTo = ((obs: Observable<SongModel[]>) => {
       obs.subscribe(songs => this.songs = songs);
     })
@@ -37,7 +38,6 @@ export class SongsComponent implements OnInit, OnDestroy {
         } else if (location.includes('albums')) {
             subscribeTo(this.albumsService.getAlbumSongs(location[2]));
         } else if (location.includes('playlists')) {
-            this.playlistService.onNewSong.subscribe(song => this.songs.push(song));
             subscribeTo(this.playlistService.getPlaylistSongs(location[2]));
         }
       }
